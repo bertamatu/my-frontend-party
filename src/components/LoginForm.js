@@ -25,7 +25,7 @@ const Input = styled.input`
 const Button = styled.input`
   box-sizing: content-box;
   min-width: 100%;
-  padding: 0.7rem;
+  padding: 0.7rem 0.6rem;
   background: rgb(159, 213, 58);
   border: none;
   border-radius: 3px;
