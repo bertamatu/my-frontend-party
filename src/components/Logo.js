@@ -3,12 +3,14 @@ import styled from "styled-components";
 
 const MainLogo = styled.p`
   color: white;
-  font-size: 2rem;
-  font-weight: 900;
+  font-size: 3rem;
+  font-weight: 750;
+  margin-bottom: 1.5rem;
 `;
 const LogoGreenDot = styled.span`
   color: rgb(159, 213, 58);
-  font-size: 2.5rem;
+  margin-left: -0.7rem;
+  font-size: 4rem;
 `;
 
 const Logo = () => {
