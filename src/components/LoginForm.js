@@ -9,7 +9,7 @@ const LogInContainer = styled.section`
   padding-top: 2rem;
 `;
 const Form = styled.form`
-  width: 12rem;
+  width: 14rem;
 `;
 const Input = styled.input`
   min-width: 100%;
