@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import BackgroundImage from "../assets/images/surfing_wave.jpg";
-import img from "../assets/images/task.jpeg";
 import LoginForm from "../components/LoginForm";
 
 const HomePageContainer = styled.main`
@@ -25,8 +24,6 @@ const Login = () => {
       <Content>
         <LoginForm />
       </Content>
-
-      <img src={img} alt="img" />
     </HomePageContainer>
   );
 };
