@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import styled from "styled-components";
-// import { MdLock } from "react-icons/md";
+import { MdLock } from "react-icons/md";
 // import { FaUser } from "react-icons/fa";
 
 const LogInContainer = styled.section`
@@ -17,6 +17,7 @@ const Input = styled.input`
   border-radius: 3px;
   padding: 0.6rem;
   margin-bottom: 0.7rem;
+  background: ${MdLock};
   &::placeholder {
     color: lightgray;
     font-size: 0.7rem;
@@ -48,7 +49,6 @@ const LoginForm = () => {
         <Input type="text" placeholder="Username" />
         {/* <FaUser /> */}
         <Input type="text" placeholder="Password" />
-        {/* <Button type="submit">Log in</Button> */}
         <Button type="submit" value="Log in" />
       </Form>
     </LogInContainer>
