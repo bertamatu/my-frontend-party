@@ -3,21 +3,21 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-
 import { BrowserRouter as Router } from "react-router-dom";
-import reducer from "./store/Reducer";
+// import { Provider } from "react-redux";
+// import { createStore } from "redux";
+// import rootReducer from "./store/reducers";
 
-const store = createStore(reducer);
+// const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
+    {/*provider makes store global */}
+    {/* <Provider store={store}> */}
+    <Router>
+      <App />
+    </Router>
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

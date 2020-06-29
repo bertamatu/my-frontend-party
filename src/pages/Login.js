@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import BackgroundImage from "../assets/images/surfing_wave.jpg";
-import LoginForm from "../components/LoginForm";
+import LoginAuth from "../components/LoginAuth";
 
 const HomePageContainer = styled.main`
   height: 100vh;
@@ -22,7 +22,7 @@ const Login = () => {
   return (
     <HomePageContainer>
       <Content>
-        <LoginForm />
+        <LoginAuth />
       </Content>
     </HomePageContainer>
   );
