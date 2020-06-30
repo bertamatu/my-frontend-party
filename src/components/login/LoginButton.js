@@ -21,14 +21,7 @@ const ButtonLogin = styled.button`
 const LoginButton = () => {
   return (
     <div>
-      <ButtonLogin
-        type="submit"
-        //   onClick={() => {
-        //     login();
-        //   }}
-      >
-        LOGIN
-      </ButtonLogin>
+      <ButtonLogin type="submit">LOGIN</ButtonLogin>
     </div>
   );
 };

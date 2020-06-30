@@ -27,32 +27,34 @@ const InputField = styled.input`
   }
 `;
 
-const LoginForm = () => {
-  const [credentials, setCredentials] = useState("");
-  console.log(credentials);
+const LoginForm = (props) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <LogInContainer>
       <section>
         <Logo />
-        <FormContainer>
+        <FormContainer onSubmit={props.login}>
           <InputField
             type="text"
             placeholder="Username"
+            value={username}
             onChange={(e) => {
-              setCredentials({ username: e.target.value });
+              setUsername(e.target.value);
             }}
           />
           <InputField
             type="password"
             placeholder="Password"
+            value={password}
             onChange={(e) => {
-              setCredentials({ password: e.target.value });
+              setPassword(e.target.value);
             }}
           />
+          <LoginButton />
         </FormContainer>
       </section>
-      <LoginButton />
     </LogInContainer>
   );
 };
