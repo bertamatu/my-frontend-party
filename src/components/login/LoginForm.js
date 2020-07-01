@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Link, { Redirect } from "react-dom";
+// import { Redirect } from "react-dom";
 
 import Logo from "../Logo";
 import LoginButton from "./LoginButton";
@@ -34,16 +34,17 @@ const LoginForm = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [servers, setServers] = useState([]);
 
   useEffect(() => {
-    const getToken = () => {
-      const token = localStorage.getItem("token");
-      if (token && token.token) {
-        setToken(token);
-      }
-    };
     getToken();
   }, []);
+
+  const getToken = () => {
+    const token = localStorage.getItem("token");
+    setToken(token);
+    console.log("getToken() RESPONSE", token, loggedIn);
+  };
 
   if (loading) {
     return <h5>Loading...</h5>;
@@ -54,7 +55,7 @@ const LoginForm = () => {
   //login => sends credentials, gets token and sets it to localStorage;
   const login = (e) => {
     e.preventDefault();
-    setLoading(true);
+    console.log("LOGGEDIN", loggedIn);
 
     const credentials = JSON.stringify({
       username: username,
@@ -68,20 +69,55 @@ const LoginForm = () => {
       })
       .then((response) => {
         setLoading(false);
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.setItem("token", response.data.token);
         setToken(token);
-        console.warn("TOKEN from login() ====>", response.data.token);
+        // getToken();
         console.warn(
           "TOKEN LocalStorage login() ====>",
           localStorage.getItem("token")
         );
       })
+      .then(() => {
+        setLoggedIn(true);
+      })
+
       .catch((error) => {
         setLoading(false);
         setError("Fetch failed! Check your credentials!");
         console.log("ERRORIUKAS", error);
       });
+    console.log("LOGGEDIN", loggedIn);
+  };
+
+  const getServers = () => {
+    const token = localStorage.getItem("token");
+    console.log("getServers() TOKEN ==== > ", token);
+    const bearerToken = "Bearer " + token;
+    console.log("getServers() BEARERTOKEN ==== > ", bearerToken);
+
+    axios
+      .get("https://playground.tesonet.lt/v1/servers", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: bearerToken,
+        },
+      })
+      .then((response) => {
+        console.log("getServers() RESPONSE1 ===> ", response.data);
+        setServers(response.data);
+      })
+      .catch((error) => {
+        if (error) {
+          console.log("getServers() ERRORAS... === >>> ", error);
+        }
+      });
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    console.log("logout() ====>", localStorage.getItem("token"));
   };
 
   return (
@@ -110,10 +146,21 @@ const LoginForm = () => {
           </FormContainer>
         </section>
       ) : (
+        // <Redirect to="/admin" />
+
         <div>
-          <Redirect to="/admin" />
-          <Link to="/admin">admin</Link>
-          <button type="submit">LOGOUT</button>
+          <button type="submit" onClick={getServers}>
+            <h1>getServers</h1>
+          </button>
+          <button type="submit" onClick={logout}>
+            <h1>LOGOUT</h1>
+          </button>
+          {servers.slice(0, 3).map((server, index) => (
+            <li key={index}>
+              <h5>{server.name}</h5>
+              <p>{server.distance}</p>
+            </li>
+          ))}
         </div>
       )}
     </LogInContainer>

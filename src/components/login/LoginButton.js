@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ButtonLogin = styled.button`
   box-sizing: content-box;
@@ -22,6 +23,7 @@ const LoginButton = () => {
   return (
     <div>
       <ButtonLogin type="submit">LOGIN</ButtonLogin>
+      <Link to="/admin">admin page</Link>
     </div>
   );
 };
