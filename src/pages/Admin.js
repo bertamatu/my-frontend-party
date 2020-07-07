@@ -5,7 +5,7 @@ import Logo from "../components/logo/DarkLogo";
 import LogoutButton from "../components/admin/LogoutButton";
 
 const Header = styled.header`
-  margin: 0;
+  margin: 5rem 0 2rem 0;
   padding: 0;
   display: flex;
   flex-direction: row;
