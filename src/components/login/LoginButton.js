@@ -23,7 +23,6 @@ const LoginButton = () => {
   return (
     <div>
       <ButtonLogin type="submit">LOGIN</ButtonLogin>
-      <Link to="/admin">admin page</Link>
     </div>
   );
 };

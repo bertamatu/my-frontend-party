@@ -1,17 +1,19 @@
 import React from "react";
-import BackgroundImage from "../assets/images/surfing_wave.jpg";
 import styled from "styled-components";
+import WelcomeMessage from "../components/WelcomeMessage";
 
 const Container = styled.main`
   height: 100vh;
   width: 100vw;
-  background-image: url(${BackgroundImage});
-  background-size: cover;
-  background-position: right;
+  background: rgb(34, 40, 61);
 `;
 
 const Home = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <WelcomeMessage />
+    </Container>
+  );
 };
 
 export default Home;

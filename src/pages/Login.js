@@ -8,7 +8,10 @@ const HomePageContainer = styled.main`
   width: 100vw;
   background-image: url(${BackgroundImage});
   background-size: cover;
-  background-position: right;
+  background-position: center;
+  @media (min-width: 768px) {
+    background-position: right;
+  }
 `;
 const Content = styled.section`
   background: rgba(30, 38, 65, 0.7);
@@ -18,11 +21,11 @@ const Content = styled.section`
   justify-content: center;
 `;
 
-const Login = () => {
+const Login = (props) => {
   return (
     <HomePageContainer>
       <Content>
-        <LoginForm />
+        <LoginForm {...props} />
       </Content>
     </HomePageContainer>
   );

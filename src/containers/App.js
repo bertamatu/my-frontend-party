@@ -1,10 +1,10 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Admin from "../pages/admin";
 import ErrorPage from "../pages/errorPage";
 import Navbar from "../components/Navbar";
-import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -19,4 +19,5 @@ function App() {
     </main>
   );
 }
+
 export default App;
