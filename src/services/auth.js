@@ -23,7 +23,6 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-  storage.setToken("");
   storage.clearStorage();
   return true;
 };
