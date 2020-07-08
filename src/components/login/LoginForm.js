@@ -60,10 +60,6 @@ const LoginForm = (props) => {
       });
   };
 
-  const logout = () => {
-    auth.logout();
-  };
-
   return (
     <LogInContainer>
       <section>

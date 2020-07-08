@@ -1,0 +1,24 @@
+export const LOGIN = "LOGIN";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGIN_PENDING = "LOGIN_LOADING";
+
+export const LOGOUT = "LOGOUT";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_ERROR = "LOGOUT_ERROR";
+export const LOGOUT_PENDING = "LOGOUT_PENDING";
+
+export const GET_SERVERS = "GET_SERVERS";
+export const GET_SERVERS_SUCCESS = "GET_SERVERS_SUCCESS";
+export const GET_SERVERS_ERROR = "GET_SERVERS_ERROR";
+export const GET_SERVERS_PENDING = "GET_SERVERS_PENDING";
+
+export const GET_TOKEN = "GET_TOKEN";
+export const GET_TOKEN_SUCCESS = "GET_TOKEN_SUCCESS";
+export const GET_TOKEN_ERROR = "GET_TOKEN_ERROR";
+export const GET_TOKEN_PENDING = "GET_TOKEN_PENDING";
+
+export const SET_TOKEN = "SET_TOKEN";
+export const SET_TOKEN_SUCCESS = "SET_TOKEN_SUCCESS";
+export const SET_TOKEN_ERROR = "SET_TOKEN_ERROR";
+export const SET_TOKEN_PENDING = "SET_TOKEN_PENDING";
