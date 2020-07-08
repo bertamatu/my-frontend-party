@@ -14,7 +14,7 @@ const login = (username, password) => {
     })
     .then((response) => {
       storage.setToken(response.data.token);
-      return storage.getToken();
+      return { token: storage.getToken() };
     })
     .catch((error) => {
       console.error("Error logging in. Error: ".error);
@@ -23,8 +23,10 @@ const login = (username, password) => {
 };
 
 const logout = () => {
-  storage.clearStorage();
-  return true;
+  return new Promise((res, reject) => {
+    storage.clearStorage();
+    return true;
+  });
 };
 
 export default {

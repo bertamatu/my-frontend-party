@@ -1,3 +1,5 @@
+import * as actionTypes from "../actions/actionTypes";
+
 const login = (
   state = {
     token: "",
@@ -7,23 +9,22 @@ const login = (
   },
   action
 ) => {
-  // --- ALWAYS RETURN newState
   let newState = state;
-  console.log("LOGIN_REDUCER", action.type);
+  const isLogin = !!action.isLogin;
   switch (action.type) {
-    case "LOGIN_PENDING":
+    case actionTypes.AUTH_PENDING:
       newState = { ...state, pending: true };
       break;
-    case "LOGIN_SUCCESS":
+    case actionTypes.AUTH_SUCCESS:
       newState = {
         ...state,
-        token: action.payload,
+        token: isLogin ? action.payload : "",
         error: null,
         pending: false,
-        isLoggedIn: true,
+        isLoggedIn: isLogin,
       };
       break;
-    case "LOGIN_ERROR":
+    case actionTypes.AUTH_ERROR:
       newState = {
         ...state,
         error: action.error,
@@ -36,5 +37,6 @@ const login = (
       return newState;
   }
   return newState;
-  console.log("LOGIN_STATE", state);
 };
+
+export default login;

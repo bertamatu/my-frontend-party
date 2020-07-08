@@ -3,7 +3,7 @@ import * as actionTypes from "../actionTypes";
 
 function login(username, password) {
   return function (dispatch) {
-    dispatch({ type: LOGIN_PENDING });
+    dispatch({ type: actionTypes.AUTH_PENDING });
 
     const credentials = JSON.stringify({
       username: username,
@@ -21,12 +21,16 @@ function login(username, password) {
         if (error) {
           throw error;
         }
-        dispatch({ type: "LOGIN_SUCCESS", payload: result.data });
+        dispatch({
+          type: actionTypes.AUTH_SUCCESS,
+          payload: result.data,
+          isLogin: true,
+        });
         console.log("LOGIN_SUCCESS", payload);
       })
       .catch((error) => {
         console.error("Error logging in. Error: ".error);
-        dispatch({ type: "LOGIN_ERROR", error: error });
+        dispatch({ type: actionTypes.AUTH_ERROR, error: error });
       });
   };
 }

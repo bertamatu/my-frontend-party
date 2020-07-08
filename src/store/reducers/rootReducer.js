@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
-import loginReducer from "./loginReducer";
-console.log("LOGINREDUCER", loginReducer);
+import authReducer from "./authReducer";
+import serversReducer from "./serversReducer";
 
 const rootReducer = combineReducers({
   //import all reducers
-  LoginReducer: loginReducer,
+  auth: authReducer,
+  servers: serversReducer,
 });
 
 export default rootReducer;
-// export default combineReducers(Object.assign(loginReducer));
