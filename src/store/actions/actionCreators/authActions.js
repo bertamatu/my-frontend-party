@@ -16,17 +16,17 @@ function login(username, password) {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
-        const data = result.data;
+        const data = response.data;
         const { error } = data;
         if (error) {
           throw error;
         }
         dispatch({
           type: actionTypes.AUTH_SUCCESS,
-          payload: result.data,
+          payload: response.data,
           isLogin: true,
         });
-        console.log("LOGIN_SUCCESS", payload);
+        console.log("LOGIN_SUCCESS", response.data);
       })
       .catch((error) => {
         console.error("Error logging in. Error: ".error);
@@ -34,3 +34,5 @@ function login(username, password) {
       });
   };
 }
+
+export default login;

@@ -11,6 +11,7 @@ const login = (
 ) => {
   let newState = state;
   const isLogin = !!action.isLogin;
+  console.log(action, state);
   switch (action.type) {
     case actionTypes.AUTH_PENDING:
       newState = { ...state, pending: true };

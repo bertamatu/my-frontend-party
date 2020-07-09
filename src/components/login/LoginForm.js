@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import styled from "styled-components";
-import auth from "../../services/auth";
-import storage from "../../services/storage";
+// import auth from "../../services/auth";
+// import storage from "../../services/storage";
+// import { login } from "../../store/actions/actionCreators/authActions";
+
+import loginIn from "../../store/actions/actionCreators/authActions";
 
 import Logo from "../logo/LightLogo";
 import LoginButton from "./LoginButton";
@@ -28,36 +33,42 @@ const InputField = styled.input`
 const LoginForm = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // const [loggedIn, setLoggedIn] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState("");
 
-  useEffect(() => {
-    const token = storage.getToken();
-    if (token) props.history.push("/admin");
-  }, []);
+  // useEffect(() => {
+  //   const token = storage.getToken();
+  //   if (token) props.history.push("/admin");
+  // }, []);
+  // if (loading) {
+  //   return <h5>Loading...</h5>;
+  // }
+  // if (error !== "") {
+  //   return <p>ERROR: {error}</p>;
+  // }
 
-  if (loading) {
-    return <h5>Loading...</h5>;
-  }
-  if (error !== "") {
-    return <p>ERROR: {error}</p>;
-  }
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
+  console.log(authState, "AUTH_STATE");
+
   const login = (e) => {
     e.preventDefault();
-    setLoggedIn(true);
-    setError("");
+    console.log("Dispatching login function");
+    dispatch(loginIn(username, password));
 
-    auth
-      .login(username, password)
-      .then((token) => {
-        setLoggedIn(true);
-        props.history.push("/admin");
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError("Fetch failed! Check your credentials!");
-      });
+    // setLoggedIn(true);
+    // setError("");
+    // auth
+    //   .login(username, password)
+    //   .then((token) => {
+    //     setLoggedIn(true);
+    //     props.history.push("/admin");
+    //   })
+    //   .catch((error) => {
+    //     setLoading(false);
+    //     setError("Fetch failed! Check your credentials!");
+    //   });
   };
 
   return (
