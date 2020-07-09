@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import api from "../../services/api";
-import auth from "../../services/auth";
 import storage from "../../services/storage";
 
 const AdminDataContainer = styled.main`
@@ -24,7 +22,7 @@ const TableHeader = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 0 0.5rem;
-  color: gray;
+  color: var(--main-text-color);
   text-transform: uppercase;
   font-size: 0.8rem;
 `;
@@ -68,10 +66,9 @@ const DataTable = (props) => {
   };
 
   // setTimeout(serversList, 60000);
-
-  useEffect(() => {
-    localStorage.setItem("servers", JSON.stringify(servers));
-  }, [servers]);
+  // useEffect(() => {
+  //   localStorage.setItem("servers", JSON.stringify(servers));
+  // }, [servers]);
 
   return (
     <AdminDataContainer>
